@@ -1,8 +1,8 @@
-(function($) {
+(function ($) {
   "use strict"; // Start of use strict
 
   // Smooth scrolling using jQuery easing
-  $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+  $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
     if (
       location.pathname.replace(/^\//, "") == this.pathname.replace(/^\//, "") &&
       location.hostname == this.hostname
@@ -12,7 +12,7 @@
       if (target.length) {
         $("html, body").animate(
           {
-            scrollTop: target.offset().top
+            scrollTop: target.offset().top,
           },
           1000,
           "easeInOutExpo"
@@ -23,22 +23,22 @@
   });
 
   // Closes responsive menu when a scroll trigger link is clicked
-  $(".js-scroll-trigger").click(function() {
+  $(".js-scroll-trigger").click(function () {
     $(".navbar-collapse").collapse("hide");
   });
 
   // Activate scrollspy to add active class to navbar items on scroll
   $("body").scrollspy({
-    target: "#sideNav"
+    target: "#sideNav",
   });
 
   // Get User's GITHUB REPO
   $.ajax({
     url: "https://api.github.com/users/nickforma/repos",
-    complete: function(xhr) {
+    complete: function (xhr) {
       // callback.call(null, xhr.responseJSON);
 
-      $.each(xhr.responseJSON, function(index, repo) {
+      $.each(xhr.responseJSON, function (index, repo) {
         if (!repo.fork) {
           console.log(repo);
           var description = repo.description ? repo.description : "No Description";
@@ -64,6 +64,6 @@
           $("#git_repo").append(html);
         }
       });
-    }
+    },
   });
 })(jQuery); // End of use strict
